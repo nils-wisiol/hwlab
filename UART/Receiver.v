@@ -20,12 +20,12 @@ begin
 	if (rst) begin
 		state <= `STATE_READY;
 		counter <= 9'd0;
-        index <= 3'd0;
-        if (din) begin
-            valid <= 1;
-        end else begin
-            valid <= 0;
-        end 
+		index <= 3'd0;
+		if (din) begin
+			valid <= 1;
+		end else begin
+			valid <= 0;
+		end 
 		data_rx <= 8'd0;
 	end else begin
 		
@@ -44,31 +44,32 @@ begin
 			`STATE_REC_START_BIT: begin
 				data_rx <= 8'd0;
 				index <= 3'd0;
-                valid <= 0;
+            valid <= 0;
 				if (counter < 278) begin
 					counter <= counter + 9'd1;
-                    if (counter == 139 && din) begin
-                        state <= `STATE_READY;
-                    end else begin
-                        state <= `STATE_REC_START_BIT; 
-                    end
+					if (counter == 139 && din) begin
+						state <= `STATE_READY;
+					end else begin
+						state <= `STATE_REC_START_BIT; 
+					end
 				end else begin
 					counter <= 9'd0;
 					state <= `STATE_REC_DATA;
 				end
 			end
 			`STATE_REC_DATA: begin
-                valid <= 0;
+            valid <= 0;
 				if (counter < 278) begin
 					counter <= counter + 9'd1;
-                    if (counter == 139) begin
-                        data_rx[index] <= din;
-                    end else begin
-                        data_rx <= data_rx;
-                    end
+					if (counter == 139) begin
+						data_rx[index] <= din;
+					end else begin
+						data_rx <= data_rx;
+					end
+					state <= state;
 				end else begin
 					counter <= 9'd0;
-                    if (index < 7) begin
+					if (index < 7) begin
 						index <= index + 3'd1;
 						state <= `STATE_REC_DATA;
 					end else begin
@@ -79,17 +80,18 @@ begin
 			end
 			`STATE_REC_STOP_BIT: begin
 				index <= 3'd0;
+				data_rx <= data_rx;
 				if (counter < 278) begin
 					counter <= counter + 9'd1;
-                    valid <= 0;
-                    if (counter == 139 && ~din) begin
-                        state <= `STATE_READY;
-                    end else begin
-                        state <= `STATE_REC_STOP_BIT; 
-                    end
+					valid <= 0;
+					if (counter == 139 && ~din) begin
+						state <= `STATE_READY;
+					end else begin
+						state <= `STATE_REC_STOP_BIT; 
+					end
 				end else begin
 					counter <= 9'd0;
-                    valid <= 1;
+					valid <= 1;
 					state <= `STATE_READY;
 				end
 			end
