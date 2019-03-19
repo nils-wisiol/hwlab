@@ -21,18 +21,14 @@ begin
 		state <= `STATE_READY;
 		counter <= 9'd0;
 		index <= 3'd0;
-		if (din) begin
-			valid <= 1;
-		end else begin
-			valid <= 0;
-		end 
+		valid <= 0; 
 		data_rx <= 8'd0;
 	end else begin
 		
 		case (state)
 			`STATE_READY: begin
 				counter <= 9'd0;
-				valid <= valid;
+				valid <= 0;
 				data_rx <= data_rx;
 				index <= 3'd0;
 				if (~din) begin
@@ -42,7 +38,7 @@ begin
 				end
 			end
 			`STATE_REC_START_BIT: begin
-				data_rx <= 8'd0;
+				data_rx <= data_rx;
 				index <= 3'd0;
             valid <= 0;
 				if (counter < 278) begin

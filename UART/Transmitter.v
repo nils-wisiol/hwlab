@@ -51,7 +51,11 @@ begin
 			end
 			`STATE_SEND_DATA: begin
 				rdy <= 0;
-				dout <= data_tx[index];
+				if (counter == 0) begin
+					dout <= data_tx[index];
+				end else begin
+					dout <= dout;
+				end
 				if (counter < 278) begin
 					counter <= counter + 9'd1;
 					index <= index;
