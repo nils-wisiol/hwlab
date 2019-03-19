@@ -3,7 +3,8 @@
 module Echo(
 	input wire CLK,
 	input wire RX,
-	output wire TX
+	output wire TX,
+	output reg LED1
 );
 
 reg rst = 0;
@@ -30,6 +31,13 @@ Transmitter t(
 
 initial begin
 	
+end
+
+always @(posedge valid_tb)
+begin
+	if (data == 8'd65) begin
+		LED1 <= ~LED1;
+	end
 end
 
 endmodule
