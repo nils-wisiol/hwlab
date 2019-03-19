@@ -20,17 +20,17 @@ always @(posedge clk)
 begin
 	if (rst) begin
 		state <= `STATE_READY;
-		counter <= 0;
+		counter <= 9'd0;
 		rdy <= 1;
 		dout <= 1;
 	end else begin
 		
 		case (state)
 			`STATE_READY: begin
-				counter <= 0;
+				counter <= 9'd0;
 				rdy <= 1;
 				dout <= 1;
-				index <= 0;
+				index <= 3'd0;
 				if (en) begin
 					state <= `STATE_SEND_START_BIT;
 				end else begin
@@ -40,9 +40,9 @@ begin
 			`STATE_SEND_START_BIT: begin
 				rdy <= 0;
 				dout <= 0;
-				index <= 0;
+				index <= 3'd0;
 				if (counter < 278) begin
-					counter <= counter + 1;
+					counter <= counter + 9'd1;
 					state <= `STATE_SEND_START_BIT;
 				end else begin
 					counter <= 0;
@@ -53,12 +53,12 @@ begin
 				rdy <= 0;
 				dout <= data_tx[index];
 				if (counter < 278) begin
-					counter <= counter + 1;
+					counter <= counter + 9'd1;
 					index <= index;
 					state <= `STATE_SEND_DATA;
 				end else begin
 					if (index < 7) begin
-						index <= index + 1;
+						index <= index + 3'd1;
 						counter <= 0;
 						state <= `STATE_SEND_DATA;
 					end else begin
@@ -73,7 +73,7 @@ begin
 				dout <= 1;
 				index <= 0;
 				if (counter < 278) begin
-					counter <= counter + 1;
+					counter <= counter + 9'd1;
 					state <= `STATE_SEND_STOP_BIT;
 				end else begin
 					counter <= 0;
