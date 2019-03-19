@@ -16,6 +16,13 @@ module Transmitter(
 	output reg dout
 	);
 	
+initial begin
+	state <= `STATE_READY;
+	counter <= 9'd0;
+	rdy <= 1;
+	dout <= 1;
+end
+
 always @(posedge clk)
 begin
 	if (rst) begin

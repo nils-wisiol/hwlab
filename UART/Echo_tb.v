@@ -41,8 +41,8 @@ end
 initial begin
     clk_tb <= 0;
     rx_tb <= 1;
-    #20 rst_tb <= 1;
-  	 #40 rst_tb <= 0;
+    //#20 rst_tb <= 1;
+  	 rst_tb <= 0;
 	 
     data_to_be_sent <= 8'd42;
 	 #135 rx_tb <= 8'd0; // start bit

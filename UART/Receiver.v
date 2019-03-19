@@ -14,7 +14,15 @@ module Receiver(
 	output reg [8:0] counter, // exposted just for debugging
 	output reg valid
 	);
-    
+
+initial begin
+	state <= `STATE_READY;
+	counter <= 9'd0;
+	index <= 3'd0;
+	valid <= 0; 
+	data_rx <= 8'd0;
+end
+
 always @(posedge clk)
 begin
 	if (rst) begin
