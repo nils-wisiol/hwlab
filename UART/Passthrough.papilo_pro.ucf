@@ -65,11 +65,11 @@ NET TX             LOC="P105" | IOSTANDARD=LVTTL | DRIVE=8 | SLEW=FAST | PULLUP;
 #NET C(1)           LOC="P115" | IOSTANDARD=LVTTL;                                # C1
 #NET C(2)           LOC="P116" | IOSTANDARD=LVTTL;                                # C2
 #NET C(3)           LOC="P117" | IOSTANDARD=LVTTL;                                # C3
-#NET C4           LOC="P118" | IOSTANDARD=LVTTL;                                # C4
-#NET C5           LOC="P119" | IOSTANDARD=LVTTL;                                # C5
-#NET C6           LOC="P120" | IOSTANDARD=LVTTL;                                # C6
+NET C4           LOC="P118" | IOSTANDARD=LVTTL;                                # C4
+NET C5           LOC="P119" | IOSTANDARD=LVTTL;                                # C5
+NET C6           LOC="P120" | IOSTANDARD=LVTTL;                                # C6
 #NET C7           LOC="P121" | IOSTANDARD=LVTTL;                                # C7
-#NET C(8)           LOC="P123" | IOSTANDARD=LVTTL;                                # C8
+NET C8           LOC="P123" | IOSTANDARD=LVTTL;                                # C8
 #NET C(9)           LOC="P124" | IOSTANDARD=LVTTL;                                # C9
 #NET C(10)          LOC="P126" | IOSTANDARD=LVTTL;                                # C10
 #NET C(11)          LOC="P127" | IOSTANDARD=LVTTL;                                # C11

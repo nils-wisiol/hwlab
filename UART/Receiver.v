@@ -12,7 +12,8 @@ module Receiver(
 	output reg [2:0] index, // exposted just for debugging
 	output reg [1:0] state, // exposted just for debugging
 	output reg [8:0] counter, // exposted just for debugging
-	output reg valid
+	output reg valid,
+	output reg sample_indicator
 	);
 
 initial begin
@@ -21,6 +22,10 @@ initial begin
 	index <= 3'd0;
 	valid <= 0; 
 	data_rx <= 8'd0;
+end
+
+initial begin
+	sample_indicator <= 0;
 end
 
 always @(posedge clk)
@@ -66,6 +71,7 @@ begin
 				if (counter < 278) begin
 					counter <= counter + 9'd1;
 					if (counter == 139) begin
+						sample_indicator <= ~sample_indicator;
 						data_rx[index] <= din;
 					end else begin
 						data_rx <= data_rx;
@@ -85,7 +91,7 @@ begin
 			`STATE_REC_STOP_BIT: begin
 				index <= 3'd0;
 				data_rx <= data_rx;
-				if (counter < 278) begin
+				if (counter < 140) begin
 					counter <= counter + 9'd1;
 					valid <= 0;
 					if (counter == 139 && ~din) begin
