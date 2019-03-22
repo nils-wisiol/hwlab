@@ -9,12 +9,14 @@ module Transmitter(
 	input wire rst,
 	input wire en,
 	input wire [7:0] data_tx,
-	output reg [2:0] index, // exposted just for debugging
-	output reg [1:0] state, // exposted just for debugging
-	output reg [8:0] counter, // exposted just for debugging
 	output reg rdy,
 	output reg dout
 	);
+
+reg [2:0] index;
+reg [1:0] state;
+reg [8:0] counter;
+
 	
 initial begin
 	state <= `STATE_READY;

@@ -27,7 +27,7 @@ CONFIG PROHIBIT=P69;
 CONFIG PROHIBIT=P60;
 
 NET CLK            LOC="P94"  | IOSTANDARD=LVTTL | PERIOD=31.25ns;               # CLK
-NET RX             LOC="P101" | IOSTANDARD=LVTTL | DRIVE=8 | SLEW=FAST;          # RX
+#NET RX             LOC="P101" | IOSTANDARD=LVTTL | DRIVE=8 | SLEW=FAST;          # RX
 NET TX             LOC="P105" | IOSTANDARD=LVTTL | DRIVE=8 | SLEW=FAST | PULLUP; # TX
 #NET A(0)           LOC="P48"  | IOSTANDARD=LVTTL;                                # A0
 #NET A(1)           LOC="P51"  | IOSTANDARD=LVTTL;                                # A1
@@ -60,7 +60,7 @@ NET TX             LOC="P105" | IOSTANDARD=LVTTL | DRIVE=8 | SLEW=FAST | PULLUP;
 #NET B(12)          LOC="P57"  | IOSTANDARD=LVTTL;                                # B12
 #NET B(13)          LOC="P55"  | IOSTANDARD=LVTTL;                                # B13
 #NET B(14)          LOC="P50"  | IOSTANDARD=LVTTL;                                # B14
-#NET B(15)          LOC="P47"  | IOSTANDARD=LVTTL;                                # B15
+#NET B15          LOC="P47"  | IOSTANDARD=LVTTL;                                # B15
 #NET C(0)           LOC="P114" | IOSTANDARD=LVTTL;                                # C0
 #NET C(1)           LOC="P115" | IOSTANDARD=LVTTL;                                # C1
 #NET C(2)           LOC="P116" | IOSTANDARD=LVTTL;                                # C2
@@ -76,7 +76,7 @@ NET C8           LOC="P123" | IOSTANDARD=LVTTL;                                #
 #NET C(12)          LOC="P131" | IOSTANDARD=LVTTL;                                # C12
 #NET C(13)          LOC="P132" | IOSTANDARD=LVTTL;                                # C13
 #NET C(14)          LOC="P133" | IOSTANDARD=LVTTL;                                # C14
-#NET C(15)          LOC="P134" | IOSTANDARD=LVTTL;                                # C15
+NET C15          LOC="P134" | IOSTANDARD=LVTTL;                                # C15
 #NET SDRAM_ADDR(0)  LOC="P140" | IOSTANDARD=LVTTL;                                # SDRAM_ADDR0
 #NET SDRAM_ADDR(1)  LOC="P139" | IOSTANDARD=LVTTL;                                # SDRAM_ADDR1
 #NET SDRAM_ADDR(2)  LOC="P138" | IOSTANDARD=LVTTL;                                # SDRAM_ADDR2

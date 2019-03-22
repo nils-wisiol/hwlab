@@ -9,12 +9,13 @@ module Receiver(
 	input wire rst,
 	input wire din,
 	output reg [7:0] data_rx,
-	output reg [2:0] index, // exposted just for debugging
-	output reg [1:0] state, // exposted just for debugging
-	output reg [8:0] counter, // exposted just for debugging
-	output reg valid,
-	output reg sample_indicator
+	output reg valid
 	);
+
+reg [2:0] index;
+reg [1:0] state;
+reg [8:0] counter;
+reg sample_indicator;
 
 initial begin
 	state <= `STATE_READY;
